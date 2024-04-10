@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background-color: #1d1d0c; */
+  background-color: #a4e39a;
+}
+.logo {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.text {
+  color: rgb(174, 162, 162);
+  font-weight: bold;
+  font-size: 70px;
+}
+img {
+  border-radius: 20px;
+  width: 200px;
+}
+textarea {
+  resize: none;
+}
+
+.page-container {
+  @apply w-auto h-72 m-auto bg-orange-300 text-center mt-20 flex items-center justify-center;
+}
+.page-container p {
+  @apply text-white text-8xl;
+}

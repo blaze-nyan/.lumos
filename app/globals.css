@@ -38,5 +38,5 @@ textarea {
   @apply w-auto h-72 m-auto bg-orange-300 text-center mt-20 flex items-center justify-center;
 }
 .page-container p {
-  @apply text-white text-8xl;
+  @apply text-white text-2xl;
 }

@@ -5,16 +5,16 @@ const Nav = () => {
   return (
     <div>
       <ul className="nav-container">
-        <li>
-          <Link href="/">
-            <img
-              src="/lumos.png"
-              alt="lumos"
-              loading="lazy"
-              className="lumos size-12"
-            />
-          </Link>
-        </li>
+        
+        <Link href="/">
+          <img
+            src="/lumos.png"
+            alt="lumos"
+            loading="lazy"
+            className="lumos size-12"
+          />
+        </Link>
+        
         <li>
           <Link href="/">Main page</Link>
         </li>

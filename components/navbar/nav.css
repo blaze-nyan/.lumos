@@ -1,3 +1,6 @@
 .nav-container {
   @apply flex flex-row items-center justify-evenly bg-slate-800 text-yellow-50 p-3;
 }
+li {
+  @apply bg-black p-1 rounded-sm;
+}

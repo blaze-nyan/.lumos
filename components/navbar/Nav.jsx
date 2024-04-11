@@ -4,7 +4,7 @@ import "./nav.css";
 const Nav = () => {
   return (
     <div>
-      <ul className="nav-container">
+      <ul className="navbar">
         
         <Link href="/">
           <img
@@ -19,7 +19,7 @@ const Nav = () => {
           <Link href="/">Main page</Link>
         </li>
         <li>
-          <Link href="../eventspage">Event</Link>
+          <Link href="/eventspage">Event</Link>
         </li>
         <li>
           <Link href="/clubs">Club</Link>
@@ -36,3 +36,4 @@ const Nav = () => {
 };
 
 export default Nav;
+

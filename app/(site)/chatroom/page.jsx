@@ -68,7 +68,7 @@ const ChatRoom = () => {
   return (
     <div className="chatbot-container-ch">
       <header className="chatbot-header-ch">
-        <h1 className="chatbot-title-ch">Chatbot for <span>ICT</span></h1>
+        <h1 className="chatbot-title-ch">Lumos for <span>ICT</span></h1>
       </header>
       <div className="chatbot-content-ch">
         <div className="message-con ">

@@ -2,38 +2,28 @@
 
 
 "use client"
-import { useState } from 'react';
+import { useState,useEffect} from 'react';
 import { run } from "@/lib/geminiai";
-import { useRouter } from 'next/router';
-
 import './chatroom.css';
+
+
 
 const ChatRoom = () => {
   const [inputValue, setInputValue] = useState('');
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(JSON.parse(localStorage.getItem('messages')) || []);
   const [aimessages, setAimessages] = useState([]);
   const [showPrompts, setShowPrompts] = useState(true);
-  // const router = useRouter();
+  
+  useEffect(() => {
+    localStorage.setItem('messages', JSON.stringify(messages));
+  }, [messages]);
+  
+  
+
+  
   const handleInputClick = () => {
     setShowPrompts(false);
   };
-  // const handleInputClick = () => {
-  //   router.push('/chatroom', undefined, { shallow: true });
-  // };
-
-  // const handleSendButtonClick = async () => {
-  //   if (inputValue.trim() !== "") {
-  //     const newMessage = { text: inputValue, sender: "user" };
-  //     setMessages((prevMessages) => [...prevMessages, newMessage]);
-
-  //     const response = await run(inputValue);
-  //     const newAiMessage = { text: response, sender: "ai" };
-  //     console.log(response)
-  //     console.log(newAiMessage)
-  //     setAimessages((prevMessages) => [...prevMessages, newAiMessage]);
-  //     setInputValue("");
-  //   }
-  // }
   const handleSendButtonClick = async () => {
     if (inputValue.trim() !== "") {
       const newMessage = { text: inputValue, sender: "user" };
@@ -54,6 +44,7 @@ const ChatRoom = () => {
 
   const handleClearButtonClick = () => {
     setMessages([]);
+    localStorage.removeItem('messages');
   };
 
   const handleKeyDown = (event) => {
@@ -61,6 +52,9 @@ const ChatRoom = () => {
       handleSendButtonClick();
     }
   };
+  // useEffect(() => {
+  //   localStorage.setItem('messages', JSON.stringify(messages));
+  // }, [messages]);
   const messageClass = (sender) => {
     return sender === "user" ? "user" : "ai";
   };
@@ -99,7 +93,7 @@ const ChatRoom = () => {
             onKeyDown={handleKeyDown}
           />
           <button id="send-button-ch" onClick={handleSendButtonClick}>Send</button>
-          {/* <button id="clear-button" onClick={handleClearButtonClick}>Clear</button> */}
+          <button id="clear-button" onClick={handleClearButtonClick}>Clear</button>
         </div>
       </div>
       {/* <div className="prompt-buttons-ch">

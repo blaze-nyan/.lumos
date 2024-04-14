@@ -38,9 +38,8 @@ export default function Home() {
   return (
     <div className="chatbot-container">
       <header className="chatbot-header">
-        <h1 className="chatbot-title">
-          This is <span>Lumos</span> Assistant
-        </h1>
+        <img src="/lumos.png" alt="logo" className="lumos-logo" />
+        <h1 className="chatbot-title">On Your Way!</h1>
       </header>
       <div className="chatbot-content">
         {/* First set of chat prompts */}

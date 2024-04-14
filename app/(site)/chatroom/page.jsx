@@ -32,7 +32,7 @@ const prompts = [
 const ChatRoom = () => {
   const [inputValue, setInputValue] = useState("");
   const [aimessages, setAimessages] = useState([]);
-  const [showPrompts, setShowPrompts] = useState(true);
+  const [showPrompts, setShowPrompts] = useState('true');
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -58,10 +58,10 @@ const ChatRoom = () => {
   
 
   const handleInputClick = () => {
-    setShowPrompts(false);
+    setShowPrompts('false');
   };
   const handleSendButtonClick = async (v) => {
-    setShowPrompts(false)
+    setShowPrompts('false')
     if (v.trim() !== "") {
       const newMessage = { text: v, sender: "user" };
       setMessages((prevMessages) => [...prevMessages, newMessage]);
@@ -84,7 +84,7 @@ const ChatRoom = () => {
   const handleClearButtonClick = () => {
     setMessages([]);
     localStorage.removeItem('messages');
-    setShowPrompts(true)
+    setShowPrompts('true')
   };
 
   const messageClass = (sender) => {

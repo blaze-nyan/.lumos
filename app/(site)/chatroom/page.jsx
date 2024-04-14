@@ -39,15 +39,16 @@ const ChatRoom = () => {
   const [messages, setMessages] = useState([]);
   
 
-  // useEffect(() => {
-  //   localStorage.setItem("messages", JSON.stringify(messages));
-  // }, [messages]);
-  // useEffect(() => {
-  //   const storedMessages = localStorage.getItem("messages");
-  //   if (storedMessages) {
-  //     setMessages(JSON.parse(storedMessages));
-  //   }
-  // }, []);
+  
+  useEffect(() => {
+    const storedMessages = localStorage.getItem("messages");
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("messages", JSON.stringify(messages));
+  }, [messages]);
 
   // const handleStore = () => {
     
@@ -78,7 +79,7 @@ const ChatRoom = () => {
         
         setMessages((prevMessages) => [...prevMessages, aiMessage]);
         console.log(response);
-        localStorage.setItem("messages", JSON.stringify(messages));
+        // localStorage.setItem("messages", JSON.stringify(messages));
         // handleStore()
 
         

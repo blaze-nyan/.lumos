@@ -90,6 +90,10 @@ const ChatRoom = () => {
     setShowPrompts(true);
     window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
   };
+  const handleInputClick = () => {
+    setShowPrompts(true);
+    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
+  };
 
   const messageClass = (sender) => {
     return sender === "user" ? "user" : "ai";
@@ -157,7 +161,7 @@ const ChatRoom = () => {
             placeholder="Type your message..."
             value={inputValue}
             onChange={(event) => setInputValue(event.target.value)}
-            // onClick={handleInputClick}
+            onClick={handleInputClick}
             onKeyDown={handleKeyDown}
           />
           <button

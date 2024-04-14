@@ -29,7 +29,7 @@ const prompts = [
     description: "Need help? Request assistance from faculty members.",
   },
 ];
-const Civil = () => {
+const ChatRoom = () => {
   const [inputValue, setInputValue] = useState("");
   const [ciAimessages, setAimessages] = useState([]);
 
@@ -186,4 +186,4 @@ const Civil = () => {
     </div>
   );
 };
-export default Civil;
+export default ChatRoom;

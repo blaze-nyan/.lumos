@@ -19,7 +19,7 @@ const subjectsSet2 = [
   { name: "Communication Arts", path: "CommunicationArt" },
   { name: "IRD", path: "Ird" },
   { name: "Biomedical Engineering", path: "BiomedEngineer" },
-  { name: "Civil Engineering", path: "Civil" },
+  { name: "Civil Engineering", path: "CivilEngineering" },
   { name: "Interior Design", path: "InterriorDesign" },
 ];
 

@@ -33,11 +33,11 @@ const prompts = [
 ];
 const ChatRoom = () => {
   const [inputValue, setInputValue] = useState("");
-  const [aimessages, setAimessages] = useState([]);
+  const [bmeAimessages, setAimessages] = useState([]);
 
   const [bmeMessages, setBmeMessages] = useState([]);
   const [showPrompts, setShowPrompts] = useState(() =>
-    messages ? false : true
+    bmeMessages ? false : true
   );
 
   useEffect(() => {
@@ -144,7 +144,7 @@ const ChatRoom = () => {
             </div>
           ))}
 
-          {aimessages.map((message, index) => (
+          {bmeAimessages.map((message, index) => (
             <div key={index} className={`${messageClass(message?.sender)}`}>
               <div className="message-text">{message?.text}</div>
             </div>

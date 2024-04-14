@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { ib } from "@/lib/ib";
 import Link from "next/link";
-import "./chatroom.css";
 const prompts = [
   {
     title: "About this Faculty",

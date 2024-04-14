@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { intedesign } from "@/lib/interiordesign";
 import Link from "next/link";
-import "./chatroom.css";
+
 const prompts = [
   {
     title: "About this Faculty",

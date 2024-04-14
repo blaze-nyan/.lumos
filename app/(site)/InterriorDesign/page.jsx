@@ -33,22 +33,22 @@ const prompts = [
 ];
 const ChatRoom = () => {
   const [inputValue, setInputValue] = useState("");
-  const [aimessages, setAimessages] = useState([]);
+  const [idAimessages, setAimessages] = useState([]);
 
-  const [messages, setMessages] = useState([]);
+  const [idMessages, setIdMessages] = useState([]);
   const [showPrompts, setShowPrompts] = useState(() =>
-    messages ? false : true
+    idMessages ? false : true
   );
 
   useEffect(() => {
-    const storedMessages = localStorage.getItem("messages");
+    const storedMessages = localStorage.getItem("idMessages");
     if (storedMessages) {
-      setMessages(JSON.parse(storedMessages));
+      setIdMessages(JSON.parse(storedMessages));
     }
   }, []);
   useEffect(() => {
-    localStorage.setItem("messages", JSON.stringify(messages));
-  }, [messages]);
+    localStorage.setItem("idMessages", JSON.stringify(idMessages));
+  }, [idMessages]);
 
   useEffect(() => {
     const prePrompts = window.localStorage.getItem(showPrompts.length - 1);
@@ -60,7 +60,7 @@ const ChatRoom = () => {
   const handleSendButtonClick = async (v) => {
     if (v.trim() !== "") {
       const newMessage = { text: v, sender: "user" };
-      setMessages((prevMessages) => [...prevMessages, newMessage]);
+      setIdMessages((prevMessages) => [...prevMessages, newMessage]);
       setShowPrompts(false);
       window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
       setInputValue("");
@@ -70,7 +70,7 @@ const ChatRoom = () => {
         response = "Not Available";
       }
       const aiMessage = { text: response, sender: "ai" };
-      setMessages((prevMessages) => [...prevMessages, aiMessage]);
+      setIdMessages((prevMessages) => [...prevMessages, aiMessage]);
       console.log(response);
     }
   };
@@ -82,8 +82,8 @@ const ChatRoom = () => {
     }
   };
   const handleClearButtonClick = () => {
-    setMessages([]);
-    localStorage.removeItem("messages");
+    setIdMessages([]);
+    localStorage.removeItem("idMessages");
     setShowPrompts(true);
     window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
   };
@@ -138,13 +138,13 @@ const ChatRoom = () => {
       )}
       <div className="chatbot-content-ch">
         <div className="message-con">
-          {messages.map((message, index) => (
+          {idMessages.map((message, index) => (
             <div key={index} className={`${messageClass(message?.sender)}`}>
               <div className="message-text">{message?.text}</div>
             </div>
           ))}
 
-          {aimessages.map((message, index) => (
+          {idAimessages.map((message, index) => (
             <div key={index} className={`${messageClass(message?.sender)}`}>
               <div className="message-text">{message?.text}</div>
             </div>

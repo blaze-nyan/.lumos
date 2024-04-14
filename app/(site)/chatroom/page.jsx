@@ -53,16 +53,15 @@ const ChatRoom = () => {
 
   useEffect(() => {
     const prePrompts = window.localStorage.getItem(showPrompts.length - 1);
-
     if (prePrompts) {
       setShowPrompts(JSON.parse(prePrompts));
     }
   }, []);
 
-  const handleInputClick = () => {
-    setShowPrompts(false);
-    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
-  };
+  // const handleInputClick = () => {
+  //   setShowPrompts(false);
+  //   window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
+  // };
   const handleSendButtonClick = async (v) => {
     if (v.trim() !== "") {
       const newMessage = { text: v, sender: "user" };
@@ -160,7 +159,7 @@ const ChatRoom = () => {
             placeholder="Type your message..."
             value={inputValue}
             onChange={(event) => setInputValue(event.target.value)}
-            onClick={handleInputClick}
+            // onClick={handleInputClick}
             onKeyDown={handleKeyDown}
           />
           <button

@@ -68,6 +68,7 @@
   margin-right: 10px;
   font-size: 16px;
   color: #34495e;
+  margin-left: 20px;
 }
 #clear-button {
   margin-left: 20px;
@@ -191,13 +192,14 @@
   }
   #user-input-container-ch {
     font-size: 12px;
-    bottom: 95px;
+    bottom: 105px;
   }
   #user-input-ch {
     padding: 8px;
     background-color: #b4bac1;
     height: 40px;
     width: 70%;
+    margin-left: 5px;
   }
   #send-button-ch {
     height: 35px;

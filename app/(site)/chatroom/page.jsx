@@ -1,10 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { run } from "@/lib/geminiai";
-
 import Link from "next/link";
 import "./chatroom.css";
-import Layout from "@/components/layout";
 
 const prompts = [
   {
@@ -38,7 +36,7 @@ const ChatRoom = () => {
 
   const [messages, setMessages] = useState([]);
   const [showPrompts, setShowPrompts] = useState(() =>
-    messages ? false : true
+    messages.length > 0 ? false : true
   );
 
   useEffect(() => {

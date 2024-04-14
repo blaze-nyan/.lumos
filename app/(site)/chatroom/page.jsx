@@ -57,22 +57,33 @@ const ChatRoom = () => {
   // useEffect(() => {
   //   localStorage.setItem("showPrompts", showPrompts);
   // }, [showPrompts]);
-  useEffect(() => {
-    localStorage.setItem("showPrompts", String(showPrompts));
-  }, [showPrompts]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("showPrompts", String(showPrompts));
+  // }, [showPrompts]);
+
+  // useEffect(() => {
+  //   const prePrompts = localStorage.getItem("showPrompts");
+  //   if (prePrompts) {
+  //     setShowPrompts(prePrompts);
+  //   }
+  // }, []);
 
   useEffect(() => {
-    const prePrompts = localStorage.getItem("showPrompts");
+    const prePrompts = window.localStorage.getItem("showPrompts");
+
     if (prePrompts) {
-      setShowPrompts(prePrompts);
+      setShowPrompts(JSON.parse(prePrompts));
     }
   }, []);
 
   const handleInputClick = () => {
     setShowPrompts(false);
+    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
   };
   const handleSendButtonClick = async (v) => {
     setShowPrompts(false);
+    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
     if (v.trim() !== "") {
       const newMessage = { text: v, sender: "user" };
       setMessages((prevMessages) => [...prevMessages, newMessage]);
@@ -96,6 +107,7 @@ const ChatRoom = () => {
     setMessages([]);
     localStorage.removeItem("messages");
     setShowPrompts(true);
+    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
   };
 
   const messageClass = (sender) => {

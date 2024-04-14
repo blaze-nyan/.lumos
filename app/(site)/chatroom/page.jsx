@@ -46,7 +46,7 @@ const ChatRoom = () => {
   }, [messages]);
 
   useEffect(()=> {
-    const prePrompts = localStorage.getItem("showPrompts");
+    const prePrompts = Boolean(localStorage.getItem("showPrompts"));
     if (prePrompts) {
       setShowPrompts(prePrompts)
     }

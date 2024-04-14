@@ -68,10 +68,10 @@ const ChatRoom = () => {
   
 
   const handleInputClick = () => {
-    setShowPrompts((prevShowPrompts) => !prevShowPrompts);
+    setShowPrompts(false);
   };
   const handleSendButtonClick = async (v) => {
-    setShowPrompts((prevShowPrompts) => !prevShowPrompts);
+    setShowPrompts(false);
     if (v.trim() !== "") {
       const newMessage = { text: v, sender: "user" };
       setMessages((prevMessages) => [...prevMessages, newMessage]);
@@ -94,7 +94,7 @@ const ChatRoom = () => {
   const handleClearButtonClick = () => {
     setMessages([]);
     localStorage.removeItem('messages');
-    // setShowPrompts('true')
+    setShowPrompts(true)
   };
 
   const messageClass = (sender) => {

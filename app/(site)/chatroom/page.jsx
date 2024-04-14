@@ -44,6 +44,12 @@ const ChatRoom = () => {
   useEffect(() => {
     localStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
+  
+  useEffect(() => {
+    localStorage.setItem("showPrompts", showPrompts);
+  }, [showPrompts]);
+
+  
 
   const handleInputClick = () => {
     setShowPrompts(false);
@@ -72,10 +78,9 @@ const ChatRoom = () => {
   const handleClearButtonClick = () => {
     setMessages([]);
     localStorage.removeItem('messages');
+    setShowPrompts(true)
   };
-  const handleButton = ()=> {
 
-  }
   const messageClass = (sender) => {
     return sender === "user" ? "user" : "ai";
   };

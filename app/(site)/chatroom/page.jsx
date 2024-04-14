@@ -35,7 +35,7 @@ const prompts = [
 const ChatRoom = () => {
   const [inputValue, setInputValue] = useState("");
   const [aimessages, setAimessages] = useState([]);
-  const [showPrompts, setShowPrompts] = useState("true");
+  const [showPrompts, setShowPrompts] = useState(true);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -62,9 +62,9 @@ const ChatRoom = () => {
   }, [showPrompts]);
 
   useEffect(() => {
-    const prePrompts = localStorage.getItem("showPrompts") === true;
+    const prePrompts = localStorage.getItem("showPrompts");
     if (prePrompts) {
-      setShowPrompts(true);
+      setShowPrompts(prePrompts);
     }
   }, []);
 

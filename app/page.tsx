@@ -4,10 +4,10 @@ import { useState } from "react";
 import Arrow from "../components/arrow/Arrow";
 import ChatRoom from "./(site)/chatroom/page";
 import { useRouter } from "next/navigation";
-
+import Layout from "@/components/layout";
 
 const subjectsSet1 = [
-  { name: "ICT",path: "/chatroom" },
+  { name: "ICT", path: "/chatroom" },
   { name: "International Business" },
   { name: "Fashion Design" },
   { name: "Biomedical Science" },
@@ -38,19 +38,33 @@ export default function Home() {
   return (
     <div className="chatbot-container">
       <header className="chatbot-header">
-        <h1 className="chatbot-title">This is <span>Lumos</span> Assistant</h1>
+        <h1 className="chatbot-title">
+          This is <span>Lumos</span> Assistant
+        </h1>
       </header>
       <div className="chatbot-content">
         {/* First set of chat prompts */}
-        <div className="chat-prompts" id="set1" style={{ display: isSet1Visible ? "block" : "none" }}>
+        <div
+          className="chat-prompts"
+          id="set1"
+          style={{ display: isSet1Visible ? "block" : "none" }}
+        >
           {subjectsSet1.map((subject, index) => (
-          <button key={index} className="prompt-button" onClick={subject.path === "/chatroom" ? handleIctClick : () => {}}>
-          {subject.name}
-        </button>
+            <button
+              key={index}
+              className="prompt-button"
+              onClick={subject.path === "/chatroom" ? handleIctClick : () => {}}
+            >
+              {subject.name}
+            </button>
           ))}
         </div>
         {/* Second set of chat prompts (initially hidden) */}
-        <div className="chat-prompts" id="set2" style={{ display: isSet1Visible ? "none" : "block" }}>
+        <div
+          className="chat-prompts"
+          id="set2"
+          style={{ display: isSet1Visible ? "none" : "block" }}
+        >
           {subjectsSet2.map((subject, index) => (
             <button key={index} className="prompt-button">
               {subject.name}

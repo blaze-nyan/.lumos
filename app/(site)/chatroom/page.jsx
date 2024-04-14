@@ -4,6 +4,7 @@ import { run } from "@/lib/geminiai";
 
 import Link from "next/link";
 import "./chatroom.css";
+import Layout from "@/components/layout";
 
 const prompts = [
   {

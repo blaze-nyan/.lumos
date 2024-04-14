@@ -51,29 +51,8 @@ const ChatRoom = () => {
     localStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
 
-  // useEffect(()=> {
-  //   const prePrompts = Boolean(localStorage.getItem("showPrompts"));
-  //   if (prePrompts) {
-  //     setShowPrompts(prePrompts)
-  //   }
-  // })
-  // useEffect(() => {
-  //   localStorage.setItem("showPrompts", showPrompts);
-  // }, [showPrompts]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("showPrompts", String(showPrompts));
-  // }, [showPrompts]);
-
-  // useEffect(() => {
-  //   const prePrompts = localStorage.getItem("showPrompts");
-  //   if (prePrompts) {
-  //     setShowPrompts(prePrompts);
-  //   }
-  // }, []);
-
   useEffect(() => {
-    const prePrompts = window.localStorage.getItem("showPrompts");
+    const prePrompts = window.localStorage.getItem(showPrompts.length - 1);
 
     if (prePrompts) {
       setShowPrompts(JSON.parse(prePrompts));

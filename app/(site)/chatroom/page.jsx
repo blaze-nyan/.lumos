@@ -34,6 +34,9 @@ const ChatRoom = () => {
   const [aimessages, setAimessages] = useState([]);
 
   const [messages, setMessages] = useState([]);
+  const [showPrompts, setShowPrompts] = useState(() =>
+    messages ? false : true
+  );
 
   useEffect(() => {
     const storedMessages = localStorage.getItem("messages");
@@ -44,9 +47,7 @@ const ChatRoom = () => {
   useEffect(() => {
     localStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
-  const [showPrompts, setShowPrompts] = useState(() =>
-    messages ? false : true
-  );
+
   // const [showPrompts, setShowPrompts] = useState(() => {
   //   const prePrompts = localStorage.getItem(showPrompts.length - 1);
   //   prePrompts ? prePrompts : true;

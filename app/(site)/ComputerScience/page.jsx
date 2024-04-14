@@ -116,7 +116,7 @@ const ChatRoom = () => {
       </Link>
       <header className="chatbot-header-ch">
         <h1 className="chatbot-title-ch">
-          Lumos for <span>ComputerScience</span>
+          Lumos for <span>CS</span>
         </h1>
       </header>
       {showPrompts ? (

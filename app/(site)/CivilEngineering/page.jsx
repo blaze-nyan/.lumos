@@ -41,7 +41,7 @@ const ChatRoom = () => {
   useEffect(() => {
     const storedMessages = localStorage.getItem("ciMessages");
     if (storedMessages) {
-      ciMessages(JSON.parse(storedMessages));
+      setCiMessages(JSON.parse(storedMessages));
     }
   }, []);
   useEffect(() => {

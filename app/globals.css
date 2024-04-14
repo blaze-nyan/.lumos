@@ -47,7 +47,6 @@ textarea {
   @apply text-white text-2xl;
 }
 
-
 /* Chatbot container styles */
 .chatbot-container {
   width: 100vw; /* Full width of the viewport */
@@ -85,7 +84,6 @@ textarea {
 .chatbot-title span {
   color: #ffcc00;
 }
-
 
 .chatbot-content {
   text-align: center;

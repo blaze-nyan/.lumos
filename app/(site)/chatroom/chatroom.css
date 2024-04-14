@@ -174,14 +174,14 @@
         border-radius: 6px;
     }
     .message-con {
-        height: 70vh;
+        height: 65vh;
     }
     .ai, .user {
         font-size: 12px;
     }
     #user-input-container-ch {
         font-size: 12px;
-        bottom: 70px;
+        bottom: 90px;
     }
     #user-input-ch {
         padding: 8px;

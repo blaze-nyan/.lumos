@@ -82,11 +82,11 @@ const ChatRoom = () => {
     window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
   };
   const handleSendButtonClick = async (v) => {
-    setShowPrompts(false);
-    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
     if (v.trim() !== "") {
       const newMessage = { text: v, sender: "user" };
       setMessages((prevMessages) => [...prevMessages, newMessage]);
+      setShowPrompts(false);
+      window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
       setInputValue("");
 
       var response = await run(v);
@@ -101,6 +101,8 @@ const ChatRoom = () => {
   const handleKeyDown = (event) => {
     if (event.key === "Enter" && event.target.id === "user-input-ch") {
       handleSendButtonClick(inputValue);
+      setShowPrompts(false);
+      window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
     }
   };
   const handleClearButtonClick = () => {

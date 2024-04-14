@@ -36,7 +36,7 @@ const ChatRoom = () => {
 
   const [messages, setMessages] = useState([]);
   const [showPrompts, setShowPrompts] = useState(() =>
-    messages.length > 0 ? false : true
+    messages.length < 0 ? true : false
   );
 
   useEffect(() => {

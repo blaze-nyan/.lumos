@@ -10,13 +10,52 @@ import './chatroom.css';
 
 const ChatRoom = () => {
   const [inputValue, setInputValue] = useState('');
-  const [messages, setMessages] = useState(JSON.parse(localStorage.getItem('messages')) || []);
+  // const [messages, setMessages] = useState(JSON.parse(localStorage.getItem('messages')) || []);
   const [aimessages, setAimessages] = useState([]);
   const [showPrompts, setShowPrompts] = useState(true);
+
+  // const [messages, setMessages] = useState(() => {
+  //   if (typeof window !== 'undefined') {
+  //     const storedMessages = localStorage.getItem('messages');
+  //     return storedMessages ? JSON.parse(storedMessages) : [];
+  //   }
+  //   return [];
+  // });
   
-  useEffect(() => {
-    localStorage.setItem('messages', JSON.stringify(messages));
-  }, [messages]);
+  // const saveMessages = () => {
+  //   if (typeof window !== 'undefined') {
+  //     localStorage.setItem('messages', JSON.stringify(messages));
+  //   }
+  // };
+  
+  // useEffect(() => {
+  //   saveMessages();
+  // }, [messages]);
+  
+  // useEffect(() => {
+  //   localStorage.setItem('messages', JSON.stringify(messages));
+  // }, [messages]);
+
+  const [messages, setMessages] = useState([]);
+  
+
+  // useEffect(() => {
+  //   localStorage.setItem("messages", JSON.stringify(messages));
+  // }, [messages]);
+  // useEffect(() => {
+  //   const storedMessages = localStorage.getItem("messages");
+  //   if (storedMessages) {
+  //     setMessages(JSON.parse(storedMessages));
+  //   }
+  // }, []);
+
+  // const handleStore = () => {
+    
+  // }
+
+
+  
+
   
   
 
@@ -27,19 +66,27 @@ const ChatRoom = () => {
   const handleSendButtonClick = async () => {
     if (inputValue.trim() !== "") {
       const newMessage = { text: inputValue, sender: "user" };
+      
       setMessages((prevMessages) => [...prevMessages, newMessage]);
+      setInputValue("");
   
       var response = await run(inputValue);
       if(response==""){
         response = "Not Available"
       }
         const aiMessage = { text: response, sender: "ai" };
+        
         setMessages((prevMessages) => [...prevMessages, aiMessage]);
-        console.log(response)
-        setInputValue("");
+        console.log(response);
+        localStorage.setItem("messages", JSON.stringify(messages));
+        // handleStore()
+
+        
+        
       
       
     }
+    
   }
 
   const handleClearButtonClick = () => {
@@ -68,15 +115,15 @@ const ChatRoom = () => {
         <div className="message-con ">
           
             {messages.map((message, index) => (
-              <div key={index} className={`${messageClass(message.sender)}`}>
-                <div className="message-text">{message.text}</div>
+              <div key={index} className={`${messageClass(message?.sender)}`}>
+                <div className="message-text">{message?.text}</div>
               </div>
             ))}
           
           
             {aimessages.map((message, index) => (
-              <div key={index} className={`${messageClass(message.sender)}`} >
-                <div className="message-text">{message.text}</div>
+              <div key={index} className={`${messageClass(message?.sender)}`} >
+                <div className="message-text">{message?.text}</div>
               </div>
             ))}
           

@@ -35,8 +35,11 @@ const prompts = [
 const ChatRoom = () => {
   const [inputValue, setInputValue] = useState("");
   const [aimessages, setAimessages] = useState([]);
-  const [showPrompts, setShowPrompts] = useState(true);
+
   const [messages, setMessages] = useState([]);
+  const [showPrompts, setShowPrompts] = useState(() =>
+    messages ? false : true
+  );
 
   useEffect(() => {
     const storedMessages = localStorage.getItem("messages");

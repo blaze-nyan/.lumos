@@ -1,45 +1,40 @@
-
-
-
 "use client"
 import { useState,useEffect} from 'react';
 import { run } from "@/lib/geminiai";
 import './chatroom.css';
 
-
-
+const prompts = [
+  {
+    title: "About this Faculty",
+    description: "Learn more about the ICT faculty."
+  },
+  {
+    title: "Schedule",
+    description: "View the available schedule for classes for this semester."
+  },
+  {
+    title: "Subject Informations",
+    description: "Get information about the subjects in the ICT program."
+  },
+  {
+    title: "Lecturer Information",
+    description: "Find out about the lecturers in the ICT department."
+  },
+  {
+    title: "Further Oppurtunities",
+    description: "Oppurtinities after graduating with ICT."
+  },
+  {
+    title: "Request Assistance",
+    description: "Need help? Request assistance from faculty members."
+  }
+];
 const ChatRoom = () => {
-  const [inputValue, setInputValue] = useState('');
-  // const [messages, setMessages] = useState(JSON.parse(localStorage.getItem('messages')) || []);
+  const [inputValue, setInputValue] = useState("");
   const [aimessages, setAimessages] = useState([]);
   const [showPrompts, setShowPrompts] = useState(true);
-
-  // const [messages, setMessages] = useState(() => {
-  //   if (typeof window !== 'undefined') {
-  //     const storedMessages = localStorage.getItem('messages');
-  //     return storedMessages ? JSON.parse(storedMessages) : [];
-  //   }
-  //   return [];
-  // });
-  
-  // const saveMessages = () => {
-  //   if (typeof window !== 'undefined') {
-  //     localStorage.setItem('messages', JSON.stringify(messages));
-  //   }
-  // };
-  
-  // useEffect(() => {
-  //   saveMessages();
-  // }, [messages]);
-  
-  // useEffect(() => {
-  //   localStorage.setItem('messages', JSON.stringify(messages));
-  // }, [messages]);
-
   const [messages, setMessages] = useState([]);
-  
 
-  
   useEffect(() => {
     const storedMessages = localStorage.getItem("messages");
     if (storedMessages) {
@@ -50,84 +45,69 @@ const ChatRoom = () => {
     localStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
 
-  // const handleStore = () => {
-    
-  // }
-
-
-  
-
-  
-  
-
-  
   const handleInputClick = () => {
     setShowPrompts(false);
   };
-  const handleSendButtonClick = async () => {
-    if (inputValue.trim() !== "") {
-      const newMessage = { text: inputValue, sender: "user" };
-      
+  const handleSendButtonClick = async (v) => {
+    setShowPrompts(false)
+    if (v.trim() !== "") {
+      const newMessage = { text: v, sender: "user" };
       setMessages((prevMessages) => [...prevMessages, newMessage]);
       setInputValue("");
-  
-      var response = await run(inputValue);
+
+      var response = await run(v);
       if(response==""){
         response = "Not Available"
       }
         const aiMessage = { text: response, sender: "ai" };
-        
         setMessages((prevMessages) => [...prevMessages, aiMessage]);
-        console.log(response);
-        // localStorage.setItem("messages", JSON.stringify(messages));
-        // handleStore()
-
-        
-        
-      
-      
-    }
-    
+        console.log(response);      
+    } 
   }
-
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && event.target.id === 'user-input-ch') {
+      handleSendButtonClick(inputValue);
+    }
+  };
   const handleClearButtonClick = () => {
     setMessages([]);
     localStorage.removeItem('messages');
   };
+  const handleButton = ()=> {
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      handleSendButtonClick();
-    }
-  };
-  // useEffect(() => {
-  //   localStorage.setItem('messages', JSON.stringify(messages));
-  // }, [messages]);
+  }
   const messageClass = (sender) => {
     return sender === "user" ? "user" : "ai";
   };
-
   return (
     <div className="chatbot-container-ch">
       <header className="chatbot-header-ch">
         <h1 className="chatbot-title-ch">Lumos for <span>ICT</span></h1>
       </header>
+      {showPrompts ? 
+      <div className="prompt-buttons-ch">
+        {prompts.map((prompt, index) => (
+          <div key={index} className="prompt-ch">
+            <button className="prompt-button-ch" onClick={()=> handleSendButtonClick(prompt.title)}>
+              {prompt.title}
+              <p className="prompt-description-ch">{prompt.description}</p>
+            </button>
+          </div>
+        ))}
+      </div> : ""}
       <div className="chatbot-content-ch">
         <div className="message-con ">
-          
             {messages.map((message, index) => (
               <div key={index} className={`${messageClass(message?.sender)}`}>
                 <div className="message-text">{message?.text}</div>
               </div>
             ))}
-          
-          
+
             {aimessages.map((message, index) => (
               <div key={index} className={`${messageClass(message?.sender)}`} >
                 <div className="message-text">{message?.text}</div>
               </div>
             ))}
-          
         </div>
         
         <div id="user-input-container-ch">
@@ -140,48 +120,10 @@ const ChatRoom = () => {
             onClick={handleInputClick}
             onKeyDown={handleKeyDown}
           />
-          <button id="send-button-ch" onClick={handleSendButtonClick}>Send</button>
+          <button id="send-button-ch" onClick={() => handleSendButtonClick(inputValue)}>Send</button>
           <button id="clear-button" onClick={handleClearButtonClick}>Clear</button>
         </div>
-      </div>
-      {/* <div className="prompt-buttons-ch">
-        <div className="prompt-ch">
-          <button className="prompt-button-ch">
-            About this Faculty
-            <p className="prompt-description-ch">Learn more about the ICT faculty.</p>
-          </button>
-        </div>
-        <div className="prompt-ch">
-          <button className="prompt-button-ch">
-            Schedule
-            <p className="prompt-description-ch">View the available schedule for classes for this semester.</p>
-          </button>
-        </div>
-        <div className="prompt-ch">
-          <button className="prompt-button-ch">
-            Subject Informations
-            <p className="prompt-description-ch">Get information about the subjects in the ICT program.</p>
-          </button>
-        </div>
-        <div className="prompt-ch">
-          <button className="prompt-button-ch">
-            Lecturer Information
-            <p className="prompt-description-ch">Find out about the lecturers in the ICT department.</p>
-          </button>
-        </div>
-        <div className="prompt-ch">
-          <button className="prompt-button-ch">
-            Further Oppurtunities
-            <p className="prompt-description-ch">Oppurtinities after graduating with ICT.</p>
-          </button>
-        </div>
-        <div className="prompt-ch">
-          <button className="prompt-button-ch">
-            Request Assistance
-            <p className="prompt-description-ch">Need help? Request assistance from faculty members.</p>
-          </button>
-        </div>
-      </div> */}
+      </div> 
     </div>
   );
 };

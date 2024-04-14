@@ -112,32 +112,21 @@
 }
 
 .prompt-buttons-ch {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-    gap:10px;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* Full width for prompt buttons */
-    margin-top: 10px;
+    @apply flex flex-row flex-wrap gap-2.5 items-center justify-center w-full mt-2.5;
 }
 
 .prompt-ch {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
+    @apply flex flex-col items-center justify-center;  
 }
 
 .prompt-button-ch {
     padding: 10px 20px; /* Larger padding for suggested prompts */
     background-color: #fff;
     color: #2980b9;
-    border: 4px solid #3b97e1;
+    /* border: 4px solid #3b97e1; */
     border-radius: 15px;
     cursor: pointer;
-    font-size: 18px; /* Larger font size for suggested prompts */
+    font-size: 16px; /* Larger font size for suggested prompts */
     transition: all 0.5s ease;
     font-weight: bold;
     width: 100%;

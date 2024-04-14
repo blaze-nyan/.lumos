@@ -191,7 +191,7 @@
   }
   #user-input-container-ch {
     font-size: 12px;
-    bottom: 110px;
+    bottom: 95px;
   }
   #user-input-ch {
     padding: 8px;
@@ -217,7 +217,7 @@
     margin-top: 0;
   }
   .prompt-buttons-ch {
-    margin-top: 110px;
+    margin-top: 220px;
   }
   .trash:hover {
     stroke: currentColor;

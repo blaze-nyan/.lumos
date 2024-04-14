@@ -2,26 +2,25 @@
 import Image from "next/image";
 import { useState } from "react";
 import Arrow from "../components/arrow/Arrow";
-import ChatRoom from "./(site)/chatroom/page";
 import { useRouter } from "next/navigation";
-import Layout from "@/components/layout";
+import Link from "next/link";
 
 const subjectsSet1 = [
-  { name: "ICT", path: "/chatroom" },
-  { name: "International Business" },
-  { name: "Fashion Design" },
-  { name: "Biomedical Science" },
-  { name: "Computer Science" },
-  { name: "Hospitality and Tourism" },
+  { name: "ICT", path: "Ict" },
+  { name: "International Business", path: "InternationalBusiness" },
+  { name: "Fashion Design", path: "Fashion" },
+  { name: "Biomedical Science", path: "BiomedScience" },
+  { name: "Computer Science", path: "ComputerScience" },
+  { name: "Hospitality and Tourism", path: "Hospitality" },
 ];
 
 const subjectsSet2 = [
-  { name: "Digital Innovation" },
-  { name: "Communication Arts" },
-  { name: "IRD" },
-  { name: "Biomedical Engineering" },
-  { name: "Civil Engineering" },
-  { name: "Interior Design" },
+  { name: "Digital Innovation", path: "DigitalInnovation" },
+  { name: "Communication Arts", path: "CommunicationArt" },
+  { name: "IRD", path: "Ird" },
+  { name: "Biomedical Engineering", path: "BiomedEngineer" },
+  { name: "Civil Engineering", path: "Civil" },
+  { name: "Interior Design", path: "InterriorDesign" },
 ];
 
 export default function Home() {
@@ -31,10 +30,6 @@ export default function Home() {
   const toggleChatPrompts = () => {
     setIsSet1Visible((prev) => !prev);
   };
-  const handleIctClick = () => {
-    router.push("/chatroom");
-  };
-
   return (
     <div className="chatbot-container">
       <header className="chatbot-header">
@@ -49,13 +44,13 @@ export default function Home() {
           style={{ display: isSet1Visible ? "block" : "none" }}
         >
           {subjectsSet1.map((subject, index) => (
-            <button
+            <Link
+              href={`/${subject.path}`}
+              className={`${subject.name}`}
               key={index}
-              className="prompt-button"
-              onClick={subject.path === "/chatroom" ? handleIctClick : () => {}}
             >
-              {subject.name}
-            </button>
+              <button className="prompt-button">{subject.name}</button>
+            </Link>
           ))}
         </div>
         {/* Second set of chat prompts (initially hidden) */}
@@ -65,9 +60,15 @@ export default function Home() {
           style={{ display: isSet1Visible ? "none" : "block" }}
         >
           {subjectsSet2.map((subject, index) => (
-            <button key={index} className="prompt-button">
-              {subject.name}
-            </button>
+            <Link
+              href={`/${subject.path}`}
+              className={`${subject.name}`}
+              key={index}
+            >
+              <button key={index} className="prompt-button">
+                {subject.name}
+              </button>
+            </Link>
           ))}
         </div>
         <Arrow onClick={toggleChatPrompts} isSet1Visible={isSet1Visible} />

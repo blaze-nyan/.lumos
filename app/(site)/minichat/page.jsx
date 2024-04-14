@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Button from "@/components/button/Button";
 import Chat from "@/components/chat/Chat";
-import Sample from "@/components/samplechat/Sample"
+import Sample from "@/components/samplechat/Sample";
 
 const useMinichat = () => {
   const [appear, setAppear] = useState(false);
@@ -14,8 +14,7 @@ const useMinichat = () => {
 
         {appear ? (
           <div className="w-56">
-            {/* <Chat /> */}
-            <Sample/>
+            <Sample />
           </div>
         ) : null}
       </div>

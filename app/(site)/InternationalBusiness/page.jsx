@@ -1,12 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import { run } from "@/lib/geminiai";
+import { ib } from "@/lib/ib";
 import Link from "next/link";
 import "./chatroom.css";
 const prompts = [
   {
     title: "About this Faculty",
-    description: "Learn more about the ICT faculty.",
+    description: "Learn more about the IB faculty.",
   },
   {
     title: "Schedule",
@@ -14,15 +14,15 @@ const prompts = [
   },
   {
     title: "Subject Informations",
-    description: "Get information about the subjects in the ICT program.",
+    description: "Get information about the subjects in the IB program.",
   },
   {
     title: "Lecturer Information",
-    description: "Find out about the lecturers in the ICT department.",
+    description: "Find out about the lecturers in the IB department.",
   },
   {
     title: "Further Oppurtunities",
-    description: "Oppurtinities after graduating with ICT.",
+    description: "Oppurtinities after graduating with IB.",
   },
   {
     title: "Request Assistance",
@@ -47,12 +47,6 @@ const ChatRoom = () => {
   useEffect(() => {
     localStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
-
-  // const [showPrompts, setShowPrompts] = useState(() => {
-  //   const prePrompts = localStorage.getItem(showPrompts.length - 1);
-  //   prePrompts ? prePrompts : true;
-  // });
-
   useEffect(() => {
     const prePrompts = window.localStorage.getItem(showPrompts.length - 1);
     if (prePrompts) {
@@ -68,7 +62,7 @@ const ChatRoom = () => {
       window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
       setInputValue("");
 
-      var response = await run(v);
+      var response = await ib(v);
       if (response == "") {
         response = "Not Available";
       }
@@ -119,7 +113,7 @@ const ChatRoom = () => {
       </Link>
       <header className="chatbot-header-ch">
         <h1 className="chatbot-title-ch">
-          Lumos for <span>ICT</span>
+          Lumos for <span>IB</span>
         </h1>
       </header>
       {showPrompts ? (

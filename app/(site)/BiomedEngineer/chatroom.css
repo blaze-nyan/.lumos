@@ -1,0 +1,226 @@
+.chatbot-container-ch {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* Move content to the top and bottom */
+  align-items: center;
+  background-color: #2c3e50;
+  padding: 10px;
+  height: 100vh; /* Full height of the viewport */
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  position: relative;
+  width: 100vw;
+}
+
+.chatbot-header-ch {
+  text-align: center;
+  position: absolute;
+  top: 20px;
+}
+
+.chatbot-title-ch {
+  font-size: 25px; /* Larger font size for the title */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 5px;
+  background: linear-gradient(
+    120deg,
+    #3b97e1,
+    #2980b9
+  ); /* Gradient background */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: pulse 1.5s infinite alternate; /* Pulse animation */
+}
+
+.chatbot-title-ch span {
+  color: #ffcc00;
+}
+
+.chatbot-content-ch {
+  text-align: center;
+  width: 100%;
+  height: 75%; /* Full width for content */
+}
+.message-con {
+  height: 65vh; /* Adjusted height for chat messages */
+  overflow-y: auto;
+  width: 100%; /* Full width for messages */
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#user-input-container-ch {
+  width: 100%; /* Full width for input field and button container */
+  display: flex;
+
+  align-items: center; /* Space input and button apart */
+  position: absolute;
+  bottom: 30px;
+}
+#user-input-ch {
+  width: 85%; /* Full width for input field */
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #34495e;
+  margin-left: 20px;
+}
+#clear-button {
+  margin-left: 20px;
+}
+
+.message {
+  padding: 5px 10px;
+  border-radius: 15px;
+  width: auto;
+  max-width: 50%;
+  min-width: 100px;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: #2980b9;
+  padding: 10px 20px;
+  width: auto;
+  max-width: 85%;
+  min-width: 5%;
+  border-radius: 10px;
+  text-align: right;
+  margin-bottom: 10px;
+}
+.ai {
+  align-self: flex-start;
+  text-align: left;
+  width: auto;
+  max-width: 85%;
+  min-width: 5%;
+  background-color: #34495e;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#send-button-ch {
+  width: 80px; /* Fixed width for send button */
+  background-color: #3b97e1;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#send-button-ch:hover {
+  background-color: #2980b9;
+}
+
+.prompt-buttons-ch {
+  @apply flex flex-row flex-wrap gap-2.5 items-center justify-center w-full mt-20;
+}
+
+.prompt-ch {
+  @apply flex flex-col items-center justify-center;
+  width: 400px;
+  height: 100px;
+}
+
+.prompt-button-ch {
+  padding: 10px 20px; /* Larger padding for suggested prompts */
+  background: rgba(43, 42, 55, 0.7);
+  color: #2980b9;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px; /* Larger font size for suggested prompts */
+  transition: all 0.5s ease;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  word-wrap: break-word;
+}
+
+.prompt-description-ch {
+  font-size: 14px; /* Smaller font size for descriptions */
+  opacity: 0.7; /* Make the text more transparent */
+  margin-top: 5px; /* Adjust spacing between button and description */
+}
+
+.prompt-button-ch:hover {
+  background-color: #3b97e1;
+  color: #fff;
+}
+.goback {
+  position: absolute;
+  top: 25px;
+  z-index: 9;
+  left: 25px;
+}
+
+/* Animation for title */
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
+}
+@media only screen and (max-width: 770px) {
+  .chatbot-container-ch {
+    overflow: hidden;
+  }
+  .chatbot-title-ch {
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 2px;
+    border-radius: 6px;
+  }
+  .message-con {
+    height: 65vh;
+  }
+  .ai,
+  .user {
+    font-size: 12px;
+  }
+  #user-input-container-ch {
+    font-size: 12px;
+    bottom: 105px;
+  }
+  #user-input-ch {
+    padding: 8px;
+    background-color: #b4bac1;
+    height: 40px;
+    width: 70%;
+    margin-left: 5px;
+  }
+  #send-button-ch {
+    height: 35px;
+    font-size: 10px;
+    padding: 0;
+    width: 40px;
+    border-radius: 10px;
+  }
+  .prompt-ch {
+    @apply w-full;
+    height: 70px;
+    font-size: 8px;
+  }
+
+  .prompt-description-ch {
+    font-size: 12px;
+    margin-top: 0;
+  }
+  .prompt-buttons-ch {
+    margin-top: 310px;
+  }
+  .trash:hover {
+    stroke: currentColor;
+  }
+}

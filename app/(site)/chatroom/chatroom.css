@@ -8,11 +8,14 @@
     height: 100vh; /* Full height of the viewport */
     font-family: 'Roboto', sans-serif;
     color: #fff;
+    position: relative;
+    width: 100vw;
 }
 
 .chatbot-header-ch {
     text-align: center;
-    margin-bottom: 20px;
+    position: absolute;
+    top: 20px;
 }
 
 .chatbot-title-ch {
@@ -51,8 +54,24 @@
 #user-input-container-ch {
     width: 100%; /* Full width for input field and button container */
     display: flex;
-    justify-content: space-between; /* Space input and button apart */
+    
+    align-items: center; /* Space input and button apart */
+    position: absolute;
+    bottom: 30px;    
 }
+#user-input-ch {
+    width: 85%; /* Full width for input field */
+    padding: 15px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #34495e;
+}
+#clear-button {
+    margin-left: 20px;
+}
+
 .message {
     padding: 5px 10px;
     border-radius: 15px;
@@ -85,22 +104,14 @@
     margin-bottom: 15px;
 }
 
-#user-input-ch {
-    width: calc(100% - 80px); /* Full width for input field */
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    font-size: 16px;
-    color: #34495e;
-}
+
 
 #send-button-ch {
     width: 80px; /* Fixed width for send button */
     background-color: #3b97e1;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 15px;
     cursor: pointer;
     font-size: 16px;
@@ -112,7 +123,7 @@
 }
 
 .prompt-buttons-ch {
-    @apply flex flex-row flex-wrap gap-2.5 items-center justify-center w-full mt-2.5;
+    @apply flex flex-row flex-wrap gap-2.5 items-center justify-center w-full mt-7;
 }
 
 .prompt-ch {
@@ -155,6 +166,12 @@
     }
 }
 @media only screen and (max-width: 770px) {
+    .chatbot-title-ch {
+        font-size: 18px;
+        letter-spacing: 1px;
+        padding: 2px;
+        border-radius: 6px;
+    }
     .message-con {
         height: 80vh;
     }
@@ -167,11 +184,25 @@
     #user-input-ch {
         padding: 8px;
         background-color: #b4bac1;
-        height: 50px;
+        height: 40px;
+        width: 65%;
     }
     #send-button-ch {
-        height: 50px;
-        font-size: 16px;
-        padding: 5px 10px;
+        height: 35px;
+        font-size: 10px;
+        padding: 0;
+        width: 40px;
+        border-radius: 10px
+    }
+    .prompt-ch {
+        @apply w-full;  
+        font-size: 8px;
+    }
+    .prompt-description-ch {
+        font-size: 12px;
+        margin-top: 0;
+    }
+    .prompt-buttons-ch {
+        display: none;
     }
 }

@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { run } from "@/lib/geminiai";
 import Link from "next/link";
 import "./chatroom.css";
-
 const prompts = [
   {
     title: "About this Faculty",
@@ -36,7 +35,7 @@ const ChatRoom = () => {
 
   const [messages, setMessages] = useState([]);
   const [showPrompts, setShowPrompts] = useState(() =>
-    messages.length < 0 ? true : false
+    aimessages.length < 0 ? true : false
   );
 
   useEffect(() => {
@@ -56,10 +55,6 @@ const ChatRoom = () => {
     }
   }, []);
 
-  // const handleInputClick = () => {
-  //   setShowPrompts(false);
-  //   window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
-  // };
   const handleSendButtonClick = async (v) => {
     if (v.trim() !== "") {
       const newMessage = { text: v, sender: "user" };

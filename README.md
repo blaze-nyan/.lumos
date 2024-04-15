@@ -2,10 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
-
+1. git clone <repo_url>
+2. cd .lumos/
+3. npm i or npm install
 ```bash
-npm run dev
+4. npm run dev
 # or
 yarn dev
 # or
@@ -13,6 +14,9 @@ pnpm dev
 # or
 bun dev
 ```
+saving chat history will not propably work on running localservers, But it will surely work on running on internet (hosting using vercel).
+
+Check our link https://lumos-kpi3.vercel.app/
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

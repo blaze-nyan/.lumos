@@ -214,7 +214,7 @@ body {
     @apply text-xs mt-0;
   }
   .prompt-buttons-ch {
-    @apply mt-[20%];
+    @apply mt-[30%];
   }
   .trash:hover {
     @apply stroke-current;

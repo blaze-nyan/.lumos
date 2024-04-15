@@ -9,17 +9,17 @@
 }
 
 body {
-  @apply bg-custom-black m-0 p-0 box-border overflow-hidden h-full;
+  @apply bg-custom-black m-0 p-0 box-border overflow-hidden h-screen w-screen;
 }
 
 /* Chatbot container styles */
 .chatbot-container {
   animation: slide-in 0.5s ease;
-  @apply w-screen h-[90vh] flex flex-col justify-around items-center p-[10px];
+  @apply w-screen h-[100%] flex flex-col justify-around items-center p-[10px];
 }
 
 .chatbot-header {
-  @apply flex flex-row gap-[20px] items-center justify-center text-center mb-[20px];
+  @apply flex flex-row gap-[1.25rem] items-center justify-center text-center mb-[1.25rem];
 }
 
 .chatbot-title {
@@ -52,7 +52,8 @@ body {
     padding: 20px;
   }
   .chatbot-header {
-    margin-top: 120px;
+    margin-top: 7.5;
+    justify-content: space-between;
   }
   .chatbot-title {
     font-size: 25px;
@@ -60,9 +61,6 @@ body {
   .lumos-logo {
     position: inherit;
     @apply size-[70px];
-  }
-  .chatbot-header {
-    justify-content: space-between;
   }
   .chat-prompts {
     flex-direction: column;

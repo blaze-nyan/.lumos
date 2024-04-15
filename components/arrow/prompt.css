@@ -1,5 +1,5 @@
 .arrow-container {
-  @apply flex justify-center items-center w-full mt-5;
+  @apply flex justify-center items-center w-full mt-3;
 }
 
 .arrow {

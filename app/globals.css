@@ -223,7 +223,7 @@ body {
     @apply text-[16px];
   }
 }
-@media only screen and (max-height: 550px) {
+@media only screen and (max-width: 375px) {
   .prompt-buttons-ch {
     @apply mt-[20%];
   }

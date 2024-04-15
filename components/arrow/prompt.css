@@ -1,112 +1,38 @@
+.arrow-container {
+  @apply flex justify-center items-center w-full mt-5;
+}
 
+.arrow {
+  @apply cursor-pointer text-4xl my-0 mx-5;
+}
 
-        .arrow-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin-top: 20px;
-        }
+/* Animation for slide-in effect */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
 
-        .arrow {
-            cursor: pointer;
-            font-size: 36px;
-            margin: 0 20px;
-        }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-        /* Animation for slide-in effect */
-        @keyframes slide-in {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
+@media only screen and (max-width: 480px) {
+  .arrow {
+    font-size: 24px;
+  }
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@media only screen and (max-width: 375px) {
+  .arrow {
+    font-size: 20px;
+  }
+}
 
-        .footer {
-            background-color: #3b97e1;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-        }
-
-        @media only screen and (max-width: 768px) {
-            /* Adjustments for smaller screens */
-            .chat-prompts {
-                flex-direction: column;
-            }
-
-            .prompt-button {
-                width: 100%;
-            }
-        }
-
-        @media only screen and (max-width: 480px) {
-            /* Adjustments for phones */
-            .navbar ul {
-                display: none;
-            }
-
-            .navbar {
-                justify-content: center;
-            }
-
-            .more-button {
-                margin-right: 0;
-            }
-
-            .chatbot-container {
-                height: 70vh;
-            }
-
-            .chatbot-title {
-                font-size: 30px;
-            }
-
-            .prompt-button {
-                font-size: 16px;
-                margin: 5px;
-            }
-
-            .arrow {
-                font-size: 24px;
-            }
-        }
-
-        @media only screen and (max-width: 375px) {
-            /* Further adjustments for phones */
-            .chatbot-title {
-                font-size: 24px;
-            }
-
-            .prompt-button {
-                font-size: 14px;
-            }
-
-            .arrow {
-                font-size: 20px;
-            }
-        }
-
-        @media only screen and (max-width: 320px) {
-            /* Additional adjustments for smaller phones */
-            .chatbot-title {
-                font-size: 20px;
-            }
-
-            .prompt-button {
-                font-size: 12px;
-            }
-
-            .arrow {
-                font-size: 16px;
-            }
-        }
+@media only screen and (max-width: 320px) {
+  .arrow {
+    font-size: 16px;
+  }
+}

@@ -91,6 +91,12 @@ body {
   .message-text {
     @apply text-[11px];
   }
+  .prompt-description-ch {
+    @apply text-[10px] mt-0;
+  }
+  .prompt-button-ch {
+    @apply text-[12px] w-[80%] h-[80%] mb-0;
+  }
 }
 @media only screen and (max-width: 320px) {
   /* Additional adjustments for smaller phones */

@@ -2,6 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+##Saving chat history will not propably work on running localservers, But it will surely work on running on internet (hosting using vercel).
+
+##Check our link We prefer using chrome browser https://lumos-kpi3.vercel.app/ 
+
+## For Running on Localhost
 1. git clone <repo_url>
 2. cd .lumos/
 3. npm i or npm install
@@ -14,7 +19,7 @@ pnpm dev
 # or
 bun dev
 ```
-saving chat history will not propably work on running localservers, But it will surely work on running on internet (hosting using vercel).
+Saving chat history will not propably work on running localservers, But it will surely work on running on internet (hosting using vercel).
 
 Check our link https://lumos-kpi3.vercel.app/
 

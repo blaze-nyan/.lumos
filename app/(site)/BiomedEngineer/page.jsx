@@ -90,6 +90,10 @@ const ChatRoom = () => {
     setShowPrompts(true);
     window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
   };
+  const handlePrompts = () => {
+    setShowPrompts(false);
+    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
+  };
 
   const messageClass = (sender) => {
     return sender === "user" ? "user" : "ai";
@@ -136,19 +140,21 @@ const ChatRoom = () => {
         ""
       )}
       <div className="chatbot-content-ch">
-        <div className="message-con">
-          {bmeMessages.map((message, index) => (
-            <div key={index} className={`${messageClass(message?.sender)}`}>
-              <div className="message-text">{message?.text}</div>
-            </div>
-          ))}
+        <button onClick={handlePrompts} className="w-full cursor-auto">
+          <div className="message-con">
+            {bmeMessages.map((message, index) => (
+              <div key={index} className={`${messageClass(message?.sender)}`}>
+                <div className="message-text">{message?.text}</div>
+              </div>
+            ))}
 
-          {bmeAimessages.map((message, index) => (
-            <div key={index} className={`${messageClass(message?.sender)}`}>
-              <div className="message-text">{message?.text}</div>
-            </div>
-          ))}
-        </div>
+            {bmeAimessages.map((message, index) => (
+              <div key={index} className={`${messageClass(message?.sender)}`}>
+                <div className="message-text">{message?.text}</div>
+              </div>
+            ))}
+          </div>
+        </button>
 
         <div id="user-input-container-ch">
           <input

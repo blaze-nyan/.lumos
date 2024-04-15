@@ -220,12 +220,12 @@ body {
     @apply stroke-current;
   }
   .prompt-button-ch {
-    @apply text-[16px];
+    @apply text-[14px];
   }
 }
 @media only screen and (max-width: 375px) {
   .prompt-buttons-ch {
-    @apply mt-[20%];
+    @apply mt-[25%];
   }
   .prompt-button-ch {
     @apply text-[12px];

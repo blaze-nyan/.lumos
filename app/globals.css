@@ -152,7 +152,7 @@ body {
   @apply w-20 bg-[#3b97e1] text-white cursor-pointer text-base transition-[background-color] duration-[0.3s] p-[15px] rounded-[20px] border-[none] hover:bg-[#2980b9];
 }
 .prompt-buttons-ch {
-  @apply flex flex-row flex-wrap gap-2.5 items-center justify-center w-full mt-[6.25rem];
+  @apply flex flex-row flex-wrap gap-2.5 items-center justify-center w-full  absolute top-20;
 }
 .prompt-ch {
   @apply w-[400px] h-[100px];
@@ -213,20 +213,20 @@ body {
   .prompt-description-ch {
     @apply text-xs mt-0;
   }
-  .prompt-buttons-ch {
+  /* .prompt-buttons-ch {
     @apply mt-[40%];
-  }
+  } */
   .trash:hover {
     @apply stroke-current;
   }
   .prompt-button-ch {
-    @apply text-[14px];
+    @apply text-[14px] w-[80%];
   }
 }
 @media only screen and (max-width: 375px) {
-  .prompt-buttons-ch {
+  /* .prompt-buttons-ch {
     @apply mt-[25%];
-  }
+  } */
   .prompt-button-ch {
     @apply text-[12px];
   }
@@ -235,9 +235,9 @@ body {
   }
 }
 @media only screen and (max-width: 290px) {
-  .prompt-buttons-ch {
+  /* .prompt-buttons-ch {
     @apply mt-[25%];
-  }
+  } */
   .prompt-button-ch {
     @apply text-[12px];
   }

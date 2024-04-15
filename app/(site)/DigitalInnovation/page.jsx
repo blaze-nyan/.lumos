@@ -1,15 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { run } from "@/lib/geminiai";
-
+import { di } from "@/lib/di";
 import Link from "next/link";
-import "./chatroom.css";
-import Layout from "@/components/layout";
-
 const prompts = [
   {
     title: "About this Faculty",
-    description: "Learn more about the ICT faculty.",
+    description: "Learn more about the IB faculty.",
   },
   {
     title: "Schedule",
@@ -17,15 +13,15 @@ const prompts = [
   },
   {
     title: "Subject Informations",
-    description: "Get information about the subjects in the ICT program.",
+    description: "Get information about the subjects in the IB program.",
   },
   {
     title: "Lecturer Information",
-    description: "Find out about the lecturers in the ICT department.",
+    description: "Find out about the lecturers in the IB department.",
   },
   {
     title: "Further Oppurtunities",
-    description: "Oppurtinities after graduating with ICT.",
+    description: "Oppurtinities after graduating with IB.",
   },
   {
     title: "Request Assistance",
@@ -34,68 +30,63 @@ const prompts = [
 ];
 const ChatRoom = () => {
   const [inputValue, setInputValue] = useState("");
-  const [aimessages, setAimessages] = useState([]);
-  const [showPrompts, setShowPrompts] = useState("true");
-  const [messages, setMessages] = useState([]);
+  const [diAimessages, setAimessages] = useState([]);
+
+  const [diMessages, setDiMessages] = useState([]);
+  const [showPrompts, setShowPrompts] = useState(() =>
+    diMessages ? false : true
+  );
 
   useEffect(() => {
-    const storedMessages = localStorage.getItem("messages");
+    const storedMessages = localStorage.getItem("diMessages");
     if (storedMessages) {
-      setMessages(JSON.parse(storedMessages));
+      setDiMessages(JSON.parse(storedMessages));
     }
   }, []);
   useEffect(() => {
-    localStorage.setItem("messages", JSON.stringify(messages));
-  }, [messages]);
-
-  // useEffect(()=> {
-  //   const prePrompts = Boolean(localStorage.getItem("showPrompts"));
-  //   if (prePrompts) {
-  //     setShowPrompts(prePrompts)
-  //   }
-  // })
-  // useEffect(() => {
-  //   localStorage.setItem("showPrompts", showPrompts);
-  // }, [showPrompts]);
-  useEffect(() => {
-    localStorage.setItem("showPrompts", String(showPrompts));
-  }, [showPrompts]);
+    localStorage.setItem("diMessages", JSON.stringify(diMessages));
+  }, [diMessages]);
 
   useEffect(() => {
-    const prePrompts = localStorage.getItem("showPrompts") === true;
+    const prePrompts = window.localStorage.getItem(showPrompts.length - 1);
     if (prePrompts) {
-      setShowPrompts(true);
+      setShowPrompts(JSON.parse(prePrompts));
     }
   }, []);
 
-  const handleInputClick = () => {
-    setShowPrompts(false);
-  };
   const handleSendButtonClick = async (v) => {
-    setShowPrompts(false);
     if (v.trim() !== "") {
       const newMessage = { text: v, sender: "user" };
-      setMessages((prevMessages) => [...prevMessages, newMessage]);
+      setDiMessages((prevMessages) => [...prevMessages, newMessage]);
+      setShowPrompts(false);
+      window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
       setInputValue("");
 
-      var response = await run(v);
+      var response = await di(v);
       if (response == "") {
         response = "Not Available";
       }
       const aiMessage = { text: response, sender: "ai" };
-      setMessages((prevMessages) => [...prevMessages, aiMessage]);
+      setDiMessages((prevMessages) => [...prevMessages, aiMessage]);
       console.log(response);
     }
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter" && event.target.id === "user-input-ch") {
       handleSendButtonClick(inputValue);
+      setShowPrompts(false);
+      window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
     }
   };
   const handleClearButtonClick = () => {
-    setMessages([]);
-    localStorage.removeItem("messages");
+    setDiMessages([]);
+    localStorage.removeItem("diMessages");
     setShowPrompts(true);
+    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
+  };
+  const handleInputClick = () => {
+    setShowPrompts(true);
+    window.localStorage.setItem("showPrompts", JSON.stringify(showPrompts));
   };
 
   const messageClass = (sender) => {
@@ -122,7 +113,7 @@ const ChatRoom = () => {
       </Link>
       <header className="chatbot-header-ch">
         <h1 className="chatbot-title-ch">
-          Lumos for <span>ICT</span>
+          Lumos for <span>Digital Inno</span>
         </h1>
       </header>
       {showPrompts ? (
@@ -144,13 +135,13 @@ const ChatRoom = () => {
       )}
       <div className="chatbot-content-ch">
         <div className="message-con">
-          {messages.map((message, index) => (
+          {diMessages.map((message, index) => (
             <div key={index} className={`${messageClass(message?.sender)}`}>
               <div className="message-text">{message?.text}</div>
             </div>
           ))}
 
-          {aimessages.map((message, index) => (
+          {diAimessages.map((message, index) => (
             <div key={index} className={`${messageClass(message?.sender)}`}>
               <div className="message-text">{message?.text}</div>
             </div>

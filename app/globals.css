@@ -236,6 +236,12 @@ body {
 }
 @media only screen and (max-width: 290px) {
   .prompt-buttons-ch {
-    @apply mt-[30%];
+    @apply mt-[25%];
+  }
+  .prompt-button-ch {
+    @apply text-[12px];
+  }
+  .prompt-description-ch {
+    @apply text-[10px] mt-0;
   }
 }

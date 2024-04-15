@@ -187,6 +187,9 @@ body {
   .chatbot-container-ch {
     @apply overflow-hidden;
   }
+  .chatbot-container {
+    @apply py-[8%];
+  }
   .chatbot-title-ch {
     @apply text-lg tracking-[1px] p-0.5 rounded-md;
   }

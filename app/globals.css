@@ -89,6 +89,14 @@ body {
     position: inherit;
     @apply size-[60px];
   }
+  #user-input-container-ch {
+    @apply bottom-[120px];
+  }
+  .ai,
+  .user,
+  .message-text {
+    @apply text-[11px];
+  }
 }
 @media only screen and (max-width: 320px) {
   /* Additional adjustments for smaller phones */
@@ -188,8 +196,9 @@ body {
     @apply h-[65vh];
   }
   .ai,
-  .user {
-    @apply text-xs;
+  .user,
+  .message-text {
+    @apply text-[12px];
   }
   #user-input-container-ch {
     @apply text-xs bottom-[105px];

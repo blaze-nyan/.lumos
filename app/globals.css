@@ -76,7 +76,7 @@ body {
   }
 
   .prompt-button {
-    font-size: 14px;
+    font-size: 12px;
     margin: 5px;
   }
   .lumos-logo {
@@ -152,7 +152,7 @@ body {
   @apply w-20 bg-[#3b97e1] text-white cursor-pointer text-base transition-[background-color] duration-[0.3s] p-[15px] rounded-[20px] border-[none] hover:bg-[#2980b9];
 }
 .prompt-buttons-ch {
-  @apply flex flex-row flex-wrap gap-2.5 items-center justify-center w-full mt-20;
+  @apply flex flex-row flex-wrap gap-2.5 items-center justify-center w-full mt-[6.25rem];
 }
 .prompt-ch {
   @apply w-[400px] h-[100px];
@@ -214,9 +214,23 @@ body {
     @apply text-xs mt-0;
   }
   .prompt-buttons-ch {
-    @apply mt-[30%];
+    @apply mt-[40%];
   }
   .trash:hover {
     @apply stroke-current;
+  }
+  .prompt-button-ch {
+    @apply text-[16px];
+  }
+}
+@media only screen and (max-height: 670px) {
+  .prompt-buttons-ch {
+    @apply mt-[20%];
+  }
+  .prompt-button-ch {
+    @apply text-[12px];
+  }
+  .prompt-description-ch {
+    @apply text-[10px] mt-0;
   }
 }
